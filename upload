@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedio1010 - Upload Video</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; }
+        .header { background: white; padding: 15px 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .logo { font-size: 24px; font-weight: bold; color: #fe2c55; text-decoration: none; }
+        .user-info { display: flex; align-items: center; font-size: 14px; }
+        .avatar { width: 35px; height: 35px; border-radius: 50%; background: #ddd; margin-right: 10px; }
+        .upload-container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #333; }
+        .file-input { border: 2px dashed #ccc; padding: 40px; text-align: center; border-radius: 8px; cursor: pointer; margin-bottom: 20px; color: #777; }
+        .file-input:hover { border-color: #fe2c55; color: #fe2c55; }
+        .caption-input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 20px; box-sizing: border-box; }
+        .submit-btn { background-color: #fe2c55; color: white; border: none; padding: 12px 20px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; transition: background-color 0.3s; }
+        .submit-btn:hover { background-color: #e0244b; }
+        #status { text-align: center; margin-top: 15px; font-weight: bold; display: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" class="logo">Vedio1010</a>
+        <div class="user-info">
+            <div class="avatar"></div>
+            <span>Creator_Demo</span>
+        </div>
+    </div>
+    
+    <div class="upload-container">
+        <h2>Upload to TikTok</h2>
+        <div class="file-input" onclick="document.getElementById('videoFile').click()">
+            <input type="file" id="videoFile" style="display:none;" accept="video/mp4,video/mov">
+            <div>Click to upload or drag & drop</div>
+            <div style="font-size:12px;">MP4 or MOV (Max 50MB)</div>
+        </div>
+        
+        <input type="text" class="caption-input" placeholder="Enter your video caption...">
+        
+        <button class="submit-btn" onclick="simulateUpload()">Upload to Profile</button>
+        
+        <div id="status"></div>
+    </div>
+
+    <script>
+        function simulateUpload() {
+            const statusDiv = document.getElementById('status');
+            const fileInput = document.getElementById('videoFile');
+            
+            if (!fileInput.files.length) {
+                alert('Please select a video file first!');
+                return;
+            }
+            
+            statusDiv.style.display = 'block';
+            statusDiv.innerHTML = '<span style="color: #555;">Uploading...</span>';
+            
+            // محاكاة عملية الرفع لغرض التصوير (٣ ثواني)
+            setTimeout(() => {
+                statusDiv.innerHTML = '<span style="color: #28a745;">✓ Video uploaded successfully to TikTok profile!</span>';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
